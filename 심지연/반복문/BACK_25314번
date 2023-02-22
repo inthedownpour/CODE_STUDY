@@ -1,0 +1,15 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+	int N;
+	int sum = 0;
+	int t;
+	scanf("%d", &N);
+	t = N / 4;
+	for (int i = 1; i <= t; i++) {
+		printf("long ");
+	}
+	printf("int");
+	return 0;
+}
