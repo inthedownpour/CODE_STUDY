@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+	int a[9] = { 0, };
+
+	for (int i = 0; i < 9; i++) {
+		scanf("%d", &a[i]);
+	}
+	int max,index=0;
+	max = a[0];
+	for (int j = 0; j < 9; j++) {
+		if (max < a[j]) {
+			max = a[j];
+			index = j;
+		}
+	}
+	printf("%d\n%d", max,index+1);
+
+	return 0;
+}
