@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+	int N = 1, X = 1;
+	int a[1000000] = { 0, };
+
+	scanf("%d", &N);
+
+	for (int i = 0; i < N; i++) {
+		scanf("%d", &a[i]);
+	}
+	int min, max;
+	min = a[0];
+	max = a[0];
+	for (int j = 0; j < N; j++) {
+		if (min >= a[j]) {
+			min = a[j];
+		}
+		else if (max < a[j]) {
+			max = a[j];
+		}
+	}
+	printf("%d %d", min, max);
+
+	return 0;
+}
