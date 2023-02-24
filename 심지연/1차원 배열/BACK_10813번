@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+	int a[100] = { 0, };
+	int N, M;
+	scanf("%d %d", &N, &M);
+	for (int n = 1; n <= N; n++) {
+		a[n] = n;
+	}
+
+	int i, j;
+	int b=0;
+	for (int n = 0; n < M; n++) {
+		scanf("%d %d", &i, &j);
+		b = a[i];
+		a[i] = a[j];
+		a[j] =b;
+		//printf("a[%d]: %d , a[%d]: %d\n", i, a[i], j, a[j]);
+	}
+	for (int n = 1; n <= N; n++) {
+		printf("%d ", a[n]);
+	}
+
+	return 0;
+}
