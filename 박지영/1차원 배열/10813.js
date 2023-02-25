@@ -19,7 +19,7 @@ for (let i = 1; i <= M; i++) {
     result[I-1] = result[J-1];
     result[J-1] = temp;
 }
-result.forEach((i)=>process.stdout.write(i+' '))
+console.log(result.join(' '));
 
 
 // const [[N, M], ...input] = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n').map(n => n.split(' ').map(n => +n));

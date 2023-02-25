@@ -17,4 +17,4 @@ for (let i = 1; i <= M; i++) {
         result[j] = K;
     }
 }
-result.forEach((i) => process.stdout.write(i + ' '))
+console.log(result.join(' '));
