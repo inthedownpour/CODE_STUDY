@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+	int a[10] = {0, };
+	int k,m;
+	int cnt=0;
+	for (int n = 0; n < 10; n++) {
+		scanf("%d", &k);
+		a[n] = k % 42;
+	}
+	for (int n = 0; n < 10; n++) {
+		for (m = 0; m < n; m++) {
+			if (a[n] == a[m])break;
+		}
+		if (n == m) cnt++;
+	}
+	printf("%d", cnt);
+	return 0;
+}

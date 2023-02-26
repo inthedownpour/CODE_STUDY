@@ -15,10 +15,8 @@ for (let i = 1; i <= T; i++) {
 
 // repeat : 문자열 일정하게 반복하기
 // let test = '123';
-testRepeat = test.repeat(3);
-console.log(testRepeat) //"123123123"
-
-let str
+// testRepeat = test.repeat(3);
+// console.log(testRepeat) //"123123123"
 
 // let fs = require('fs');
 // let input = fs.readFileSync('/dev/stdin').toString().split('\n');
