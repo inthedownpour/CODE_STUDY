@@ -1,0 +1,16 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+
+void swap(int *ptr,int a, int b);
+
+
+int main() {
+	char alp[100]="";
+
+	scanf("%s", &alp);
+	int len = strlen(alp);
+	printf("%d", len);
+
+	return 0;
+}
