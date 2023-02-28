@@ -1,0 +1,44 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+void swap(int *ptr,int a, int b);
+
+
+int main() {
+	int array[101] = { 0, };
+	int* ptr = array;
+	int N, M;
+	int i, j;
+
+	scanf("%d %d", &N, &M);//첫째줄
+
+	for (int n = 1; n <= N; n++) {//각 배열에 인덱스 숫자 넣기
+		array[n] = n;
+	}
+	for (int n = 0; n < M; n++) {//M번 동안 입력받기
+		scanf("%d %d", &i, &j);
+		//동시에 역순 정렬
+		swap(ptr, i, j);
+	}
+
+	for (int n = 0; n < N; n++) {
+		printf("%d ", array[n]);
+	}
+	return 0;
+}
+
+void swap(int *ptr, int a, int b) {
+	int arr_1[101] = { 0, };
+	
+	for (int i = b; i >= a; i--) {
+		printf("\n임시저장: *(ptr+%d)의 값 %d 을 임시 배열 arr_1[%d] %d로",i, *(ptr + i), b-i,arr_1[b - i]);
+		arr_1[b - i] =*(ptr+i);
+	}
+	printf("\n----------임시 배열에서 진짜로----------\n");
+	for (int j = a; j <= b; j++) {
+		//printf("arr_1[%d] : %d  / *(ptr+%d) : %d\n", j, arr_1[j], j,*(ptr+j));
+		*(ptr + b-j) = arr_1[j];
+		//printf("<옮긴 후>\narr_1[%d] : %d  / *(ptr+%d) : %d\n", j, arr_1[j], j, *(ptr + j));
+	}
+	printf("\n\n");
+}
