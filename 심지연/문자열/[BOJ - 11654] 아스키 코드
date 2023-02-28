@@ -1,0 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+void swap(int *ptr,int a, int b);
+
+
+int main() {
+	char alp;
+
+	scanf("%c", &alp);
+	printf("%d", alp);
+
+	return 0;
+}
