@@ -1,0 +1,18 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	char alp[100]="";
+	int t;
+	scanf("%d", &t);
+	for (int i = 0; i < t; i++) {
+		scanf("%s", &alp);
+		int len = strlen(alp);
+
+		printf("%c%c\n", alp[0],alp[len-1]);
+	}
+	
+
+	return 0;
+}
