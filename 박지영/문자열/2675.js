@@ -1,5 +1,3 @@
-const { default: test } = require('node:test');
-
 let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
 let T = +input[0];
 
