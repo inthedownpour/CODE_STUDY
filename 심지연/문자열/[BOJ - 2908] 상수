@@ -1,0 +1,32 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main() {
+	char str1[3] = { 0, };
+	char str2[3] = { 0, };
+	int count = 0;
+
+	scanf("%s %s", &str1, &str2);
+
+	//printf("%d", str1[0]);
+	char sub1 = str1[2];
+	str1[2] = str1[0];
+	str1[0] = sub1;
+
+	char sub2 = str2[2];
+	str2[2] = str2[0];
+	str2[0] = sub2;
+
+	int a = (str1[0]-48) * 100 + (str1[1] - 48) * 10 + (str1[2] - 48);
+	int b = (str2[0] - 48) * 100 + (str2[1] - 48) * 10 + (str2[2] - 48);
+	int max = a;
+	if (a < b) {
+		max = b;
+	}
+
+	printf("%d", max);
+
+	return 0;
+}
