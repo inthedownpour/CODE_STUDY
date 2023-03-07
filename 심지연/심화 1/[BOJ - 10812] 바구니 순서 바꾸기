@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main() {
+	int M, N;
+	int bk[101] = { 0, };
+	int* arr; // 동적 할당 배열
+
+	scanf("%d %d", &N, &M);
+	for (int i = 1; i <= N; i++) {
+		bk[i] = i;
+	}
+	for (int h = 0; h < M; h++) {
+		int i, j, k;
+		scanf("%d %d %d", &i, &j, &k);
+
+		arr = malloc(sizeof(int) * (j - i));
+		for (int g = 0; g < (j - i); g++) {
+			arr[g] = bk[i + g];
+		} //동적 할당 배열에 바꿀 초기 값 저장
+		//필요한 값 가져와서 바꾸고 두번째로 넣는 것은 동적 할당 배열에서 가져오기
+		for (int h = 0; h <= (j-k); h++) {
+			bk[i + h] = bk[k + h]; // mid 이후의 값 넣기
+		}
+		for (int h = 0; h < (k - i); h++) {
+			bk[i + (j - k) + h+1] = arr[h];//임시 배열에서 begin부터 붙여넣기
+		}
+		//printf("%d번째 배열: ",h);
+		//for (int i = 1; i <= N; i++) {
+		//	printf("%d ", bk[i]);
+		//}
+		//printf("\n-----------------------------------------\n");
+
+	}
+	for (int i = 1; i <= N; i++) {
+		printf("%d ", bk[i]);
+	}
+
+	return 0;
+}
