@@ -14,7 +14,7 @@ const [row, col] = input.shift();
 const arr = new Array(col).fill(0);
 let array = [];
 
-// = let array = Array.from(Array.from(N), ()=>Array(M).fill(0))
+// = let arr = Array.from(new Array(row), () => new Array(col).fill(0));
 for (let i = 0; i < row; i++) {
     array.push([...arr]); // 전개 구문
 }
