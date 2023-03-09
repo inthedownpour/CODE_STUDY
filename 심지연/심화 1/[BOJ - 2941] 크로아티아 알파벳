@@ -1,0 +1,78 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+	char str[100];
+
+	scanf("%s", &str);
+
+	int len,count=0;
+
+	len = strlen(str);
+
+	for (int i = 0; i < len; i+=2) {
+		//printf("%c", str[i]);
+		if (str[i] == 'c') {
+			if (str[i + 1] == '=') count++;
+			else if (str[i + 1] == '-') count++;
+			else {
+				count++;
+				i--;
+				continue;
+			}
+		}
+		else if (str[i] == 'd') {
+			if (str[i + 1] == 'z'&&str[i+2]=='=') {
+				count++;
+				i++;
+			}
+			else if (str[i + 1] == '-') count++;
+			else {
+				count++;
+				i--;
+				continue;
+			}
+		}
+		else if (str[i] == 'l') {
+			if (str[i + 1] == 'j') count++;
+			else {
+				count++;
+				i--;
+				continue;
+			}
+		}
+		else if (str[i] == 'n') {
+			if (str[i + 1] == 'j') count++;
+			else {
+				count++;
+				i--;
+				continue;
+			}
+		}
+		else if (str[i] == 's') {
+			if (str[i + 1] == '=') count++;
+			else {
+				count++;
+				i--;
+				continue;
+			}
+		}
+		else if (str[i] == 'z') {
+			if (str[i + 1] == '=') count++;
+			else {
+				count++;
+				i--;
+				continue;
+			}
+		}
+		else {
+			i--;
+			count++;
+		}
+	}
+	printf("%d", count);
+
+	return 0;
+}
