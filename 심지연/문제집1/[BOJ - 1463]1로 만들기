@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main() {
+	int ar[1000000] = { 0, };
+	int x;
+	scanf("%d", &x);
+	for (int i = 2; i <= x; i++) {
+		ar[i] = ar[i - 1] + 1;
+		if (i % 3 == 0) {
+			if (ar[i] > ar[i / 2] + 1) {
+				ar[i] = ar[i / 2] + 1;
+			}
+		}
+		if (i % 3 == 0) {
+			if (ar[i] > ar[i / 3] + 1) {
+				ar[i] = ar[i / 3] + 1;
+			}
+		}
+	}
+	printf("%d", ar[x]);
+
+	return 0;
+}
