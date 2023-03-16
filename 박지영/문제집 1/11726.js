@@ -2,10 +2,12 @@ const input = require('fs').readFileSync('/dev/stdin').toString();
 const num = Number(input);
 const DP = new Array(num + 1).fill(0);
 
-DP[1] = 1;
-DP[2] = 2;
+DP[1] = 1; //| 1x2
+DP[2] = 2; //= 2x1
 for (let i = 3; i <=num; i++) {
     DP[i] = (DP[i - 1] + DP[i - 2]) % 10007;
+    //dp[3] = dp[2] + dp[1] |(맨 왼쪽 사각형) + | = (n-2) or = = (n-1)
+    //dp[4] = dp[3] + dp[2]
 }
 
 console.log(DP[num]);
