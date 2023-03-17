@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main() {
+	int t,n;
+	scanf("%d", &t);
+
+	int dp[1001] = { 0, };
+	dp[1] = 1;
+	dp[2] = 2;
+	dp[3] = 4;
+	//1 = 1 => 1개
+	//2 = 1+1, 2 => 2개
+	//3 = 1+1+1, 2+1, 1+2, 3 => 4개
+	//4= 1+1+1+1, 2+1+1(*3개), 2+2, 3+1(*2개) => 7개
+	for (int i = 1; i <= t; i++) {
+		scanf("%d", &n);
+		for (int j = 4; j <= n; j++) {
+			dp[j] = (dp[j - 1] + dp[j - 2] + dp[j - 3]);
+		}
+		printf("%d\n", dp[n]);
+	}
+
+	return 0;
+}
