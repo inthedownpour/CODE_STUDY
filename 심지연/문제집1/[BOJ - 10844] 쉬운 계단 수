@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+#define div 1000000000
+
+//런타임 에러(OUT OF BOUNDS)가 나오는 이유 찾기
+
+int main() {
+	int n, answer = 0;
+	int dp[100][11] = { 0, };
+	scanf("%d", &n);
+
+	for (int i = 1; i <= 9; i++) {
+		dp[1][i] = 1;
+	}
+	for (int i = 2; i <= n; i++) {
+		for (int j = 0; j <= 9; j++) {
+			if (j == 0) {
+				dp[i][j] = dp[i - 1][j + 1] % div;
+			}
+			else if (j == 9) {
+				dp[i][j] = dp[i - 1][j - 1] % div;
+			}
+			else
+				dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j + 1]) % div;
+		}
+	}
+	for (int i = 0; i <= 9; i++) {
+		answer = (answer+dp[n][i])%div;
+	}
+	printf("%d", answer%div);
+	return 0;
+}
