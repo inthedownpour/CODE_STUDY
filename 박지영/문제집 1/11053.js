@@ -11,6 +11,7 @@ for (let i = 1; i < +n; i++) {
         }
     }
     dp[i] = Math.max(...values);
+    console.log(dp[i])
 }
 console.log(Math.max(...dp));
 
