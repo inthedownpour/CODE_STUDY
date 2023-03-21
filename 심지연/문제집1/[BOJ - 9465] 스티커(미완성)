@@ -1,0 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <math.h>
+int dp[2][100002] = { 0, };
+int main() {
+    int t, n, put;
+    scanf("%d", &t);
+    
+    for (int T = 0; T < t; T++) {
+        scanf("%d", &n);
+        for (int i = 0; i < 2; i++) {
+            for (int j = 2; j < n + 2; j++) {
+                scanf("%d", &put);
+                dp[i][j] = put;
+
+            }
+        }
+
+      //점화식 공부 하기
+        
+    }
+    return 0;
+}
