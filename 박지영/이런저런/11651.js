@@ -5,6 +5,7 @@ let arr = [];
 for (let i = 0; i < testCase; i++) {
     const cells = [];
     for (let j = 1; j >= 0; j--) {
+        // sort() 위해 y좌표와 x좌표 바꿔서 저장
         cells.push(input[i].split(' ')[j])
     }
     arr.push(cells)
