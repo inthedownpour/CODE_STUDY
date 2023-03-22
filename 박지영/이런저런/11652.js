@@ -1,3 +1,4 @@
+//https://velog.io/@ppmyor/%EB%B0%B1%EC%A4%80BOJ-11652-%EC%B9%B4%EB%93%9C-node.js-javascript
 //JS의 최대 값은 2^53 - 1이다.
 //수가 2의 62제곱까지 주어질 수 있으므로 모든 수를 BigInt로 변환해야 한다.
 const [N, ...card] = require('fs').readFileSync("/dev/stdin").toString().trim().split('\n').map((e) => BigInt(e));
@@ -23,6 +24,7 @@ let count = 1;
 let maxValue = card[0];
 let maxCount = 0;
 
+//투포인터
 card.forEach((v, i) => {
     next = card[i+1];
     if (v === next) {
