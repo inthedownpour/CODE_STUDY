@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#ifndef max
+#define max(x,y) (((x)>(y))?(x):(y))
+#endif
+
+int main() {
+	int ar[10001] = { 0, };
+	int dp[10001] = { 0, };
+	int n;
+	scanf("%d", &n);
+	for (int k = 0; k < n; k++) {
+		scanf("%d", &ar[k]);
+		
+	}
+	dp[1] = ar[1];
+	dp[2] = dp[1] + ar[2];
+	//3개만 연속하지 않으면 되므로 n번째에 왔을 때 n-3의 값에 n-2, n-1, n의 세개 중 어느 것들을 더해야 가장 높은 값이 되는지 비교
+	for (int k = 3; k <= n; k++) {
+		dp[k] = max(dp[k - 3] + ar[k - 1] + ar[k], dp[k - 2] + ar[k]);
+		dp[k] = max(dp[k], dp[k - 1]);
+	}
+	printf("%d", dp[n]);
+
+	return 0;
+}
