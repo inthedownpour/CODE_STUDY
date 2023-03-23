@@ -9,7 +9,7 @@ let dp = [0, ...card]
 for (let i = 2; i < dp.length; i++) {
     for (let j = 1; j < i; j++) { //N 전까지 반복
         dp[i] = Math.max(dp[i], (dp[i - j] + dp[j]));
-        console.log(i, i -j, j)
+        //console.log(i, i -j, j)
     }
 }
 
