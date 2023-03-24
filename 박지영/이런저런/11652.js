@@ -3,7 +3,7 @@
 //수가 2의 62제곱까지 주어질 수 있으므로 모든 수를 BigInt로 변환해야 한다.
 const [N, ...card] = require('fs').readFileSync("/dev/stdin").toString().trim().split('\n').map((e) => BigInt(e));
 //입력 값을 오름차순으로 정렬
-//numbers.sort((a, b) => a - b); 기존방식은 BigInr라 동작 x
+//numbers.sort((a, b) => a - b); 기존방식은 BigInt라 동작 x
 
 // function compare(a, b) {
 //     if (a is less than b by some ordering criterion) {
