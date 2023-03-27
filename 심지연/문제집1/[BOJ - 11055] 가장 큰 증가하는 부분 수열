@@ -1,0 +1,31 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main() {
+    int n, res = 1;
+    int dp[1001];
+    int arr[1001] = { 0, };
+    scanf("%d", &n);
+
+    dp[0] = arr[0];
+
+    for (int i = 1; i <= n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    //모든 dp[i]는 각 자리의 숫자인 arr[i]로 설정
+    for (int i = 1; i <= n; i++) {
+        dp[i]=arr[i];
+        for (int j = 1; j < i; j++) {
+            if (arr[i] > arr[j]&&dp[i]<dp[j]+arr[i]) {
+                //i번이 되기 전까지의 가장 큰 부분 수열의 크기에 arr[i]을 더했을 때와 dp[i]를 비교
+                dp[i] = dp[j]+arr[i];
+                printf("select: %d\n", arr[i]);
+            }
+        }
+        if (res < dp[i]) res = dp[i];
+    }
+    printf("%d", res);
+    return 0;
+}
