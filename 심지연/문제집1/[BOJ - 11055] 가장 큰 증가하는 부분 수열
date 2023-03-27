@@ -21,7 +21,7 @@ int main() {
             if (arr[i] > arr[j]&&dp[i]<dp[j]+arr[i]) {
                 //i번이 되기 전까지의 가장 큰 부분 수열의 크기에 arr[i]을 더했을 때와 dp[i]를 비교
                 dp[i] = dp[j]+arr[i];
-                printf("select: %d\n", arr[i]);
+                //printf("select: %d\n", arr[i]); 확인용 코드
             }
         }
         if (res < dp[i]) res = dp[i];
