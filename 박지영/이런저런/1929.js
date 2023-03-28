@@ -1,6 +1,5 @@
 let [a, b] = require("fs").readFileSync("/dev/stdin").toString().trim().split(' ').map(Number);
 
-//1과 자신만으로 나누어 떨어지는지 체크
 const isPrime = (n) => {
     if (n === 1) {
         return false;
@@ -15,8 +14,11 @@ const isPrime = (n) => {
     return true;
 }
 
+const result = [];
 for (let i = a; i <= b; i++) {
     if (isPrime(i) === true) {
-        console.log(i);
+        result.push(i);
     }
 }
+
+console.log(result.join('\n'));
