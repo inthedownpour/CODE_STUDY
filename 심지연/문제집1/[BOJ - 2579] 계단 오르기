@@ -1,0 +1,28 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#ifndef max
+#define max(x,y) (((x)>(y))?(x):(y))
+#endif // !max
+
+int main() {
+    int n, res = 1;
+    int dp[301];
+    int ar[301] = { 0, };
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        scanf("%d", &ar[i]);
+        dp[i] = 0;
+    }
+    dp[1] = ar[1];
+    dp[2] = max(ar[1]+ar[2],ar[2]);
+    dp[3] = max(ar[1] + ar[3], ar[2] + ar[3]);
+
+    for (int i = 4; i <=n; i++) {
+        dp[i] = max(dp[i - 3]+ar[i-1]+ar[i] , dp[i - 2]+ar[i]);
+    }
+    printf("%d", dp[n]);
+    return 0;
+}
