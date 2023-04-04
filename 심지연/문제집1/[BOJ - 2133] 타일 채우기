@@ -1,0 +1,24 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdlib.h>
+#include <stdio.h>
+
+int main() {
+	int dp[10001] = { 0, };
+	int n, res;
+	scanf("%d", &n);
+
+	dp[0] = 1;
+	dp[2] = 3;
+
+	for (int i = 4; i <= n; i++) {
+		dp[i] = dp[i - 2] * 3;
+		for (int j = 4; j <= i; j += 2) {
+			dp[i] += dp[i - j] * 2;
+		}
+	}
+
+
+	printf("%d", dp[n]);
+
+	return 0;
+}
