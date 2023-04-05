@@ -7,7 +7,7 @@ const tree = Array.from({ length: n + 1 }, () => []);
 for (let [from, to] of input.map((e) => e.split(" ").map(Number))) {
     tree[from].push(to);
     tree[to].push(from);
-  }
+}
 
 // 노드 방문 처리
 let check = new Array(n + 1).fill(0);
@@ -16,6 +16,10 @@ const queue = [];
 // 부모 노드 저장
 check[1] = 1;
 
+// 탐색해주면서 다음 미방문 노드를 갈 때
+// "부모노드는 현재 노드다" => 저장
+
+// tree[1] = [6, 4]
 for (let next of tree[1]) {
     // 1이 시작이고 child 노드를 넣고
     // check[child]엔 부모노드의 값을 넣어준다
@@ -24,13 +28,12 @@ for (let next of tree[1]) {
 }
 
 while (queue.length) {
-    const cur = queue.shift();
+    const cur = queue.shift(); //현재 노드(=부모 노드)
     for (let next of tree[cur]) {
-        if (!check[next]) {
+        if (!check[next]) { //미방문 노드라면
             check[next] = cur; //부모 노드의 값을 넣어준다.
             queue.push(next);
         }
     }
 }
-
-console.log(check.slice(2).join('\n'));
+console.log(check.slice(2).join('\n')); // 0, 1 인덱스 제외하고 출력
