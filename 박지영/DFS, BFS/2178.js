@@ -27,7 +27,7 @@ function bfs(row, col) {
             const [nx, ny] = [x + dx[i], y + dy[i]];
             // 미로를 벗어나는 좌표는 제외
             if (nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
-            // 길이가 있고, 방문하지 않았다면 방문
+            // 이동할 수 있으면서 방문하지 않은 노드라면 방문
             if (miro[nx][ny] && !check[nx][ny]) {
                 // (x,y)의 값이 (x,y)까지 최단경로에 해당한다.
                 check[nx][ny] = check[x][y] + 1;
