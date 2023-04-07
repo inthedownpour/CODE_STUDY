@@ -1,3 +1,4 @@
+// https://github.com/encrypted-def/basic-algo-lecture/blob/master/0x09/1926.cpp
 const fs = require("fs");
 const [nm, ...input] = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
 
@@ -8,7 +9,7 @@ let picture = input.map((item) => item.split(' ').map((v) => +v));
 const visited = Array.from({ length: n }, () => Array.from({ length: m }, () => false));
 
 let answer = 0; // 그림의 갯수
-let result = [];
+let result = []; // 그림의 넓이를 담을 공간
 
 function bfs(x, y) {
     const queue = [[x, y]];
@@ -37,8 +38,10 @@ function bfs(x, y) {
     }
 }
 
+// 이중 for문으로 각 칸이 bfs의 시작점이 될 수 있는지 체크
 for (let i = 0; i < n; i++) {
     for (let j = 0; j < m; j++) {
+        // 해당 칸이 색칠 안된 부분이거나, 이미 (i, j)를 방문했을 경우 넘어감
         if (picture[i][j] === 1 && !visited[i][j]) {
             visited[i][j] = true;
             bfs(i, j);
