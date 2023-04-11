@@ -1,0 +1,78 @@
+//스택 이용 풀이
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#define STACK_SIZE 50
+
+char stack[STACK_SIZE];
+int top = -1;
+
+int isFull() {
+	if (top >= STACK_SIZE - 1) {
+		printf("Error : Stack is Full!\n");
+		return 1;
+	}
+	return 0;
+}
+int isEmpty() {
+	if (top == -1) {
+		return 1;
+	}
+	return 0;
+}
+
+void push(int data) {
+	if (!isFull()) {
+		top++;
+		stack[top] = data;
+		//printf("%d\n", data);
+	}
+}
+void pop() {
+	if (!isEmpty()) {
+		stack[top--];
+	}
+}
+int isVPS(char *str) {
+	int result = 1;
+	for (int j = 0; str[j]; j++) {
+		if (str[j] == '(') {
+			push(str[j]);
+		}
+		else {
+			if (isEmpty()) {
+				result = 0;
+				break;
+			}
+			else {
+				pop();
+			}
+		}
+	}
+	if (!isEmpty()) result = 0;
+	while (!isEmpty()) {
+		pop();
+	}
+
+	return result;
+}
+int main() {
+	int n;
+	char str[51];
+	scanf("%d", &n);
+
+	for (int i = 0; i < n; i++) {
+		scanf("%s", &str);
+		//printf("str크기: %d \n", strlen(str));
+		if (isVPS(str)) {
+			printf("YES\n");
+		}
+		else printf("NO\n");
+		
+	}
+
+
+	return 0;
+}
