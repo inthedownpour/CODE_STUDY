@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <string.h>
+#define StrLen 100
+
+int isEng(int a) {
+	if (a >= 65 && a <= 90) {
+		return 2;
+	}
+	else if (a >= 97 && a <= 122) {
+		return 1;
+	}
+	else return 0;
+}
+
+int main() {
+	char str[StrLen];
+	scanf("%[^\n]s", str);
+
+	for (int i = 0; i < strlen(str); i++) {
+		if (isEng(str[i])) {
+			//printf("%c는 알파벳입니다.", str[i]);
+			if (isEng(str[i]) == 2) {//영어 대문자일때
+				if (str[i] >= 78) str[i] -= 13;
+				else str[i] += 13;
+				
+				//printf(" :  %c의 아스키코드는 %d입니다.\n", str[i], str[i]);
+			}
+			else if (isEng(str[i]) == 1) {//영어 소문자일때
+				if (str[i] >= 110) str[i] -= 13;
+				else str[i] += 13;
+				//printf(" :  %c의 아스키코드는 %d입니다.\n", str[i], str[i]);
+			}
+		}
+	}
+
+	for (int i = 0; i < strlen(str); i++) {
+		printf("%c", str[i]);
+	}
+
+	return 0;
+}
