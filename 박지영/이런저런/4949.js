@@ -1,11 +1,10 @@
-//스택
 let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
 let answer = [];
 
 for (let i = 0; i < input.length; i++) {
     const stack = [];
     let str = input[i];
-    let isCompare = true;
+    let isCompare = true; //올바른 괄호 쌍인지를 판단할 변수
     if (str == '.') break;
     for (let j = 0; j < str.length; j++) {
         if (str[j] == '(' || str[j] == '[') {
