@@ -1,0 +1,35 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void){
+	int pipe = 0;
+	int result = 0;
+	char str[100000];
+	char prev;
+
+	scanf("%s", str);
+
+	for (int i = 0; i < strlen(str); i++) {
+		if (str[i] == '(') {
+			pipe++;
+			//printf("막대기 수 1 증가 : %d \n", pipe);
+		}
+		else {
+			pipe--;
+			if (prev == '(') {
+				result += pipe;
+				//printf("pipe %d 개를 result %d에 더함");
+			}
+			else { 
+				result++; 
+				//printf("result값 1 증가 : %d \n", result);
+			}
+		}
+		prev = str[i];
+		//printf("현재 %d 번째 단계에서의 막대기 개수 : %d \n", i, result);
+	}
+	printf("%d", result);
+
+}
