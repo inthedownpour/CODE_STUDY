@@ -2,7 +2,7 @@
 const [[n, s], arr] = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n').map((e) => e.split(' ').map(Number));
 
 let sum = 0;
-let minLength = Infinity;
+let minLength = Infinity; // 양의 무한대
 let start = 0; // 시작
 let end = 0; // 끝
 
