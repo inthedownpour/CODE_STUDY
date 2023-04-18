@@ -29,6 +29,34 @@ const recursive = (row, col, n) => {
     }
 }
 
+// const solution = (row, col, n) => {
+//     while (n-- > 0) {
+//         let y = parseInt(Math.pow(2, n) / 2);
+//         let x = y;
+
+//         let temp = parseInt(Math.pow(2, n) / 2);
+//         let skip = parseInt(Math.pow(4, n));
+
+//         if (row < y && col < x) {
+//             x -= temp;
+//             y -= temp;
+//         } else if (row < y && x <= col) {
+//             x += temp;
+//             y -= temp;
+//             count += skip;
+//         } else if (y <= row && col < x) {
+//             x -= temp;
+//             y += temp;
+//             count += skip * 2;
+//         } else {
+//             x += temp;
+//             y += temp;
+//             count += skip * 3;
+//         }
+//     }
+// }
+
+// solution(r, c, N);
 recursive(0, 0, 2 ** N);
 
 console.log(count);
