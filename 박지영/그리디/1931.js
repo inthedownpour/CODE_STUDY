@@ -1,3 +1,6 @@
+// 그리디 대표유형 - 활동선택
+// 활동선택 : 한 번에 하나의 활동만 처리할 수 있는 하나의 강의실에서
+// 제안된 활동들 중 가장 많은 활동을 처리할 수 있는 스케줄을 짜는 문제
 let [n, ...input] = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
 const arr = input.map((e) => e.split(' ').map(Number));
 
