@@ -2,14 +2,14 @@ const input = require('fs').readFileSync('/dev/stdin').toString();
 
 const n = Number(input);
 var dp = [[], new Array(10).fill(1)];
-for(var i=2; i<=n; i++){
+for (var i = 2; i <= n; i++) {
     dp[i] = [];
-    dp[i][0] = dp[i-1][0] % 10007;
-    for(var j=1; j<10; j++){
-    	dp[i][j] = (dp[i][j-1] + dp[i-1][j]) % 10007;
+    dp[i][0] = dp[i - 1][0] % 10007;
+    for (var j = 1; j < 10; j++) {
+        dp[i][j] = (dp[i][j - 1] + dp[i - 1][j]) % 10007;
     }
 }
-console.log(dp[n].reduce((a,v)=> a+v, 0) % 10007);
+console.log(dp[n].reduce((a, v) => a + v, 0) % 10007);
 
 // 2차원 배열에 i길이의 j로 끝나는 오르막 수의 개수를 저장
 
