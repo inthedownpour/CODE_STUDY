@@ -3,26 +3,28 @@
 #include<algorithm>
 #include<string.h>
 
-//변수크기 조심, longlong으로 선언하기! 
+//함수 단순화, 변수 크기 조심
+//모듈러, 지수법칙 이용
 
 using namespace std;
+int c;
 
-long long times(long long a, long long b, long long c) {
+long long times(long long a, long long b) {
 	if (b == 1) { 
 		return a%c;
 	}
-	long long val = times(a, b / 2, c);
-	val = val * val % c;
-	if (b % 2 == 0) return val;
-	return val * a % c;
+	long long val = times(a, b / 2);
+	if (b % 2 == 1) 
+		return (val * val % c) * a % c;
+	return val * val % c;
 }
 
 
 int main(void) {
-	int a, b, c;
+	int a, b;
 	int res = 0;
 	cin >> a >> b >> c;
-	res = times(a, b, c);
+	res = times(a, b);
 	cout << res;
 	return 0;
 }
