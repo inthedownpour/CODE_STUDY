@@ -1,0 +1,86 @@
+#include<iostream>
+#include<stdio.h>
+#include<algorithm>
+#include<string.h>
+#include<vector>
+#include<queue>
+#include<tuple>
+
+using namespace std;
+#define x first
+#define y second
+#define z third
+int board[102][102][102];
+int dist[102][102][102];
+int n, m, h;
+int dx[6] = { 1,0,-1,0,0,0 };
+int dy[6] = { 0,1,0,-1,0,0 };
+int dz[6] = { 0,0,0,0,1,-1 };
+
+int main(void) {
+	cin >> m >> n>>h;
+
+	queue<tuple<int, int,int> > q;
+	for (int k = 0; k < h; k++) {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				cin >> board[i][j][k];
+				//입력된 익은 토마토의 위치를 입력 받음과 동시에 queue에 넣는다.
+				if (board[i][j][k] == 1) {
+					q.push(make_tuple(i, j, k));
+				}
+				//익지 않은 토마토는 입력 받는 동시에 dist[i][j]에 -1로 저장.
+				if (board[i][j][k] == 0) {
+					dist[i][j][k] = -1;
+				}
+
+			}
+		}
+	}
+	
+
+
+	//queue에 모든 수가 빠져나갈때까지(bfs가 끝나는 때) while문 돌리기
+	while (!q.empty()) {
+		tuple<int, int, int> cur = q.front();
+		q.pop();
+
+		for (int dir = 0; dir < 6; dir++) {
+
+			int nx = get<0>(cur) + dx[dir];
+			int ny = get<1>(cur) + dy[dir];
+			int nz = get<2>(cur) + dz[dir];
+			//상자 외부로 좌표가 나가지 않는지 확인 하는 if문
+			if (nx < 0 || nx >= n || ny < 0 || ny >= m || nz < 0 || nz >= h) continue;
+			//만약에 익은 토마토면 지나가기
+			if (dist[nx][ny][nz] >= 0) continue;
+
+			//하루 마다 익은 토마토의 앞,양옆, 뒤에 있던 안 익은 토마토가 다 익을 
+			//기간을 구하기 위해 1씩 더한다.
+			dist[nx][ny][nz] = dist[get<0>(cur)][get<1>(cur)][get<2>(cur)] + 1;
+			q.push(make_tuple(nx, ny, nz));
+		}
+	}
+
+	int ans = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			for (int k = 0; k < h; k++) {
+				if (dist[i][j][k] == -1) {
+					cout << -1;
+					return 0;
+				}
+				//dist에 저장된 수 중 가장 큰 수를 ans에 넣는다.
+				ans = max(ans, dist[i][j][k]);
+				if (ans <= dist[i][j][k]) {
+					/*cout << "현재 익은 토마토의 위치는 (" << i << j << k << endl;
+					cout << "이 토마토가 익은 날짜는? " << ans << endl;*/
+				}
+			}
+			
+		}
+	}
+
+	cout << ans;
+	return 0;
+}
