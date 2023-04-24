@@ -17,7 +17,7 @@ for (let i = 1; i < arrN.length; i++) {
 arrM.forEach((v) => {
     let start = 0;
     let end = result.length - 1;
-    let res = false;
+    let res = false; // 중간값과 탐색 요소의 값이 같으면 변화시켜 줄 boolean타입 변수 // 조건식으로 시간복잡도 줄이기위해 필요함
 
     while (start <= end) {
         let mid = parseInt((start + end) / 2);
