@@ -1,3 +1,4 @@
+// https://crowdreport-defender.tistory.com/13
 let [nm, ...input] = require("fs").readFileSync('/dev/stdin').toString().trim().split("\n");
 const [n, m] = nm.split(' ').map(Number);
 const city = input.map((v) => v.split(' ').map(Number));
@@ -30,7 +31,7 @@ const getMinDistance = () => {
         chicken.forEach((_, index) => {
             // 가장 가까운 치킨집(check가 true인)과의 거리를 누적하여 합을 리턴
             if (check[index] === true) {
-                const [cx, cy] = chicken[index];
+                console.log([cx, cy])
                 min = Math.min(min, Math.abs(hx - cx) + Math.abs(hy - cy));
             }
         });
@@ -48,6 +49,8 @@ let answer = Infinity;
 const DFS = (idx, cnt) => {
     // 고른 치킨집 (cnt)가 m이 되었을 때 거리계산을 시작한다
     if (cnt === m) {
+        // 조합이 완성되면 하려던 행위
+        // 1. 치킨거리 계산, 2. 그 값을 현재 가진 최소값과 비교해 갱신
         answer = Math.min(answer, getMinDistance());
         return;
     } else {
