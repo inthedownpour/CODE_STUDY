@@ -1,19 +1,15 @@
 #include<iostream>
 #include<stdio.h>
-#include<algorithm>
-#include<string.h>
-#include<vector>
-#include<queue>
 
 using namespace std;
 
 void times(int a, int b, int c) {
 	if (c == 1) {
-		cout << a << ' ' << b << endl;
+		cout << a << ' ' << b << "\n"; // endl사용하면 시간 초과 나옴
 		return;
 	}
 	times(a, 6 - a - b, c - 1);
-	cout << a << ' ' << b << endl;
+	cout << a << ' ' << b << "\n";
 	times(6 - a - b, b, c - 1);
 }
 
@@ -21,7 +17,7 @@ void times(int a, int b, int c) {
 int main(void) {
 	int k;
 	cin >> k;
-	cout << (1 <<k) - 1<<endl;
+	cout << (1 <<k) - 1<< "\n";
 	times(1, 3, k);
 
 	return 0;
