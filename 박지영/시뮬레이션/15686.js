@@ -31,7 +31,6 @@ const getMinDistance = () => {
         chicken.forEach((_, index) => {
             // 가장 가까운 치킨집(check가 true인)과의 거리를 누적하여 합을 리턴
             if (check[index] === true) {
-                console.log([cx, cy])
                 min = Math.min(min, Math.abs(hx - cx) + Math.abs(hy - cy));
             }
         });
