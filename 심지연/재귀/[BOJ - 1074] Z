@@ -1,0 +1,38 @@
+#include<iostream>
+#include<stdio.h>
+#include <cmath>
+
+using namespace std;
+int n, r, c;
+int ans;
+
+void func(int x, int y, int k) {
+	if (x==r&&y==c) {
+
+
+		cout << ans<<"\n";
+		return;
+	}
+	if (r < x + k && r >= x && c < y + k && c >= y) {
+		func(x, y, k / 2);
+		func(x, y + k / 2, k / 2);
+		func(x + k / 2, y, k / 2);
+		func(x + k / 2, y + k / 2, k / 2);
+	}
+	else {
+		ans += k * k;
+	}
+}
+
+
+
+int main(void) {
+	cin >> n >> r >> c;
+	int k; // 2^n을 한 값 저장
+
+	k = pow(2, n);
+
+	func(0,0,k);
+
+	return 0;
+}
