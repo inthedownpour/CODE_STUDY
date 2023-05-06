@@ -1,0 +1,59 @@
+#include<iostream>
+#include<stdio.h>
+#include <cmath>
+#include <vector>
+using namespace std;
+#define X first
+#define Y second
+
+int dx[4] = { 1,0,-1,0 };
+int dy[4] = { 0,1,0,-1 };
+
+int n, m;
+
+int arr[9][9];
+int board[9][9]; //사각지대 최소 세기 위한 변수
+
+vector<pair<int, int>> cctv; // cctv 위치 저장 페어 백터 변수
+
+// #은 감시하는 구역, 6은 벽,0은 빈칸, 1~5는 cctv종류
+
+
+bool OB(int a, int b) {
+	return a < 0 || a >= n || b < 0 || b >= m;
+}
+
+void move(int x, int y, int dir) {
+	dir %= 4;
+	while (1) {
+		x += dx[dir];
+		y += dy[dir];
+		if (OB(x, y) || board[x][y] == 6) return; //만약 범위 밖 or 벽(6)을 만나면 함수 반환
+		if (board[x][y] != 0) continue; // 만약 cctv를 만나면 패스
+		board[x][y] = 7; //감시하는 부분을 7로 변환한다.
+	}
+
+}
+
+
+int main(void) {
+	int min = 0;
+	cin >> n >> m;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cin >> arr[i][j];
+			if (board[i][j] != 0 && board[i][j] != 6) // 벽이나 감시되지 않는 부분이라면 = cctv라면!
+				cctv.push_back({ i,j });
+			if (board[i][j] == 0) min++;
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+
+	}
+
+
+
+	func(0);
+	return 0;
+}
