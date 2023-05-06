@@ -1,0 +1,62 @@
+#include<iostream>
+#include<stdio.h>
+#include <vector>
+#include <string>
+
+using namespace std;
+int n, m, b[12];
+int all_b[11]; //모든 버튼 상태 배열
+
+int srch(int n) {
+	if (n == 0) {
+		if (all_b[0]) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+
+	int len = 0;
+
+	while (n > 0) {
+		if (all_b[n % 10]) { // 0~9 까지의 숫자 버튼 중 만약 고장났다면 
+			return 0; // 버튼으로 이동 불가능
+		}
+		len += 1;
+		n /= 10;
+	}
+	return len;
+
+}
+
+int main() {
+	cin >> n>>m;
+	int ans = abs(n - 100); // 목표 채널과의 절대값을 구해서 이 수를 기준으로 버튼을 찍어가는 것이 빠른지 그냥 +-로 가는게 빠른지 확인
+
+	if (n == 100) {// 채널이 100일 때 이동을 안하므로 이동 횟수가 0이다.
+		cout << "0";
+		return 0;
+	}
+	for (int i = 0; i < m; i++) {
+		cin >> b[i];
+		all_b[b[i]] = 1; // 입력받은 고장난 버튼을 모든 버튼 상태 배열에 추가한다.
+	}
+	
+	for (int i = 0; i < 1000000; i++) { //왜 1000000?번 돌리지?
+		//0부터 1000000까지 숫자를 하나씩 키워서 만약 i가 6532인데 버튼이 2랑 9가 고장났을 경우
+		//6532가 %10됐을 때 값은 2 이므로 번호로 이동이 불가 
+		// (만약 가능하면 srch함수의 n이 증가하며 653.2를 %10해서 나머지가 3이 나온다. 이것으로 각 자리의 숫자를 분리해서 고장난 버튼인지 비교가능)
+
+		int len = srch(i);
+		if (len > 0) {
+			int press = abs(i - n); // 숫자 버튼 이동 후 +-
+			if (ans > len + press) {
+				ans = len + press;
+			}
+		}
+	}
+	cout << ans;
+
+	return 0;
+}
