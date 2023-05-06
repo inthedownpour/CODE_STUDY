@@ -3,7 +3,7 @@ const [tc, ...input] = require('fs').readFileSync('/dev/stdin').toString().trim(
 for (let i = 0; i < tc; i++) {
     const n = input[i];
 
-    const fibo = [[1, 0], [0, 1]];
+    const fibo = [[1, 0], [0, 1]]; //[f(0) 호출 횟수, f(1) 호출 횟수]
 
     for (let j = 2; j <= n; j++) {
         fibo[j] = [
