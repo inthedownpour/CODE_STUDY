@@ -5,7 +5,7 @@ nums = nums.split(' ').map(Number);
 const solve = (n, s, arr) => {
     let output = 0;
     // 고를 숫자의 인덱스(i)와 지금까지 고른 숫자들의 합(sum)을 인수로 받는다
-    const recursion = (i, sum) => {
+    const dfs = (i, sum) => {
         // 순회가 끝나면 종료시킨다
         if (i === n) return;
 
