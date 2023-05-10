@@ -1,5 +1,5 @@
 // https://jaekwan.tistory.com/226
-const input = require('fs').readFileSync('example.txt').toString().trim().split("\n");
+const input = require('fs').readFileSync('/dev/stdin').toString().trim().split("\n");
 const N = +input[0].trim();
 const M = +input[1].trim();
 let broken = [];
