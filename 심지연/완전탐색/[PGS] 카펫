@@ -1,0 +1,25 @@
+#include <string>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+vector<int> solution(int brown, int yellow) {
+    vector<int> answer;
+    int total = brown+yellow;
+    
+    for(int i=3;i<=sqrt(total);i++){ //가로>=세로이기 때문에 total의 한변의 길이가 똑같아 지는 경우까지 가로의 길이를 늘림
+        // i를 가로로 본다. 전체에서 가로 길이를 나눴을 때 나누어 떨어지면 이제 생각해볼직한 경우가 나온다.
+        if(total%i==0){ //만약 전체칸 수를 가로로 나눌 수 있다면?
+            //세로 길이도 나누어 지는지 테스트(세로= brown - 가로 +4)
+            int width = (brown - (i*2) +4)/2;
+            if((i-2)*(width-2)==yellow){
+                answer.push_back(width);
+                answer.push_back(i);
+            }
+            
+        }
+    }
+    
+    return answer;
+}
