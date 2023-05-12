@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int solution(vector<int> citations) {
+    int answer = 0;
+    sort(citations.begin(),citations.end());
+    for(int h=1;h<=citations.size();h++){
+        int cnt=0;
+        for(int i=0;i<citations.size();i++){
+            if(h<=citations[i]){ // h편 이상 인용된 논문이 있으면 갯수 추가
+                cnt++;
+            }
+        }
+        if((h<=cnt)&&(cnt>answer)){//h편 이상 인용된 논문이 h편 이상이고 기존의 h편 인용 논문 h편이상인 cnt값 보다 크면?
+            answer=h;
+        }
+    }
+    return answer;
+}
