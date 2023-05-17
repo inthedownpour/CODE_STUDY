@@ -1,0 +1,28 @@
+#include<iostream>
+#include<algorithm>
+#include <vector>
+
+using namespace std;
+int arr[100003];
+int n;
+
+int main() {
+	int t, mid;
+	cin >> t;
+	for (int i = 0; i < t; i++) {
+		cin >> n;
+		for (int k = 0; k < n; k++) {
+			cin >> mid;
+			for (int j = 0; j < k; j++) {
+				if (arr[j]==mid) {
+					break;
+				}
+				else arr[k] = mid;
+			}
+		}
+		sort(arr, arr + n);
+		cout << "#" << i+1 << " " << sizeof(arr) << "\n";
+	}
+
+	return 0;
+}
