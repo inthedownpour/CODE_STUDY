@@ -1,0 +1,27 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+int main() {
+	pair<int, int> sch[100003]; // <시작시간, 종료시간>
+
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		cin >> sch[i].second >> sch[i].first;
+	}
+	sort(sch, sch + n);
+	
+	int k = 0,ans=0; // k는 스케쥴을 집어넣는 기준 시간으로 이것보다 빠르면 넣을 수 없다.
+	for (int i = 0; i < n; i++) {
+		if (k > sch[i].second) {
+			continue;
+		}
+		ans++;
+		k = sch[i].first; 
+	}
+	cout << ans;
+	return 0;
+}
