@@ -1,0 +1,26 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+int arr[13];
+
+int main() {
+
+	int n, k;
+	cin >> n >> k;
+
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	int ans=0;
+
+	for (int i = n - 1; i >= 0; i--) {
+		ans += k / arr[i]; // 만약 동전의 가치가 k보다 크다면 0.xxx로 나와서 int에 0으로 저장 후 더해짐.
+		k %= arr[i];//현재 k값에 현재 arr[i]에 있는 동전의 가치로 나눴을 때 만약 나누어 진다면 나머지 값을 저장
+	}
+
+	cout << ans;
+	return 0;
+}
